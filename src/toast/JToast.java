@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -76,6 +77,8 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
         if(mainWindow == null)throw new RuntimeException("Main window not initialized");
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT,5,5);
         setLayout(layout);
+
+
         
     }
     
@@ -123,6 +126,18 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
         if(mainWindow == null)throw new RuntimeException("Main frame not set");
 
         JToast toast = JToast.getInstance();
+        toast.setBody(message);
+        toast.setType(type);
+        toast.setPosition(hpos,vpos);
+        toast.send();
+
+    }
+
+    public static void sendToastMessage(TYPE type, String title,String message,HORIZONTAL_POSITION hpos,VERTICAL_POSITION vpos){
+        if(mainWindow == null)throw new RuntimeException("Main frame not set");
+
+        JToast toast = JToast.getInstance();
+        toast.setTitle(title);
         toast.setBody(message);
         toast.setType(type);
         toast.setPosition(hpos,vpos);
@@ -269,7 +284,7 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
         }
 
         setLocation((int)x,(int)y);
-
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),25,25));
         setVisible(true);
         sent=true;
         finished=false;
