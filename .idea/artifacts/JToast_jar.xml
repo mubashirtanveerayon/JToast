@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/out/artifacts/JToast_jar</output-path>
     <root id="archive" name="JToast.jar">
       <element id="module-output" name="JToast" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/flatlaf-3.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/flatlaf-extras-3.5.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/jsvg-1.6.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

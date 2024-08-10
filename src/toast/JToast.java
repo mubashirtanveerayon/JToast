@@ -12,10 +12,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import utils.RoundedButton;
 
 /**
@@ -188,7 +190,7 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
         getContentPane().setBackground(backgroundColor);
 
 
-        RoundedButton closeButton=new RoundedButton(new Color(0xD0D0D0),new Color(0x959595),new Color(0xBDBDBD),new Color(0xBDBDBD),"/res/close_hover.png","/res/close.png",50);
+        RoundedButton closeButton=new RoundedButton(new Color(0xD0D0D0),new Color(0x959595),new Color(0xBDBDBD),new Color(0xBDBDBD),"/res/close_hover.svg","/res/close.svg",50);
         closeButton.setPreferredSize(new Dimension(30,30));
         closeButton.addActionListener(this);
         JTextPane textPane = new JTextPane();
@@ -209,17 +211,17 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
                 ribbonColor = SUCCESS_RIBBON_COLOR;
                 StyleConstants.setForeground(titleStyle,new Color(0x377945));
                 title = title == null ? SUCCESS_TITLE:title;
-                iconLabel = new JLabel(new ImageIcon(getClass().getResource("/res/success.png")));
+                iconLabel = new JLabel(new FlatSVGIcon(getClass().getResource("/res/success.svg")));
                 break;
             } case TYPE.ERROR:{
                 title = title == null ? FAILURE_TITLE:title;
                 ribbonColor = ERROR_RIBBON_COLOR;
                 StyleConstants.setForeground(titleStyle,new Color(0x984141));
-                iconLabel = new JLabel(new ImageIcon(getClass().getResource("/res/error.png")));
+                iconLabel = new JLabel(new FlatSVGIcon(getClass().getResource("/res/error.svg")));
                 break;
             }
             default:{
-                iconLabel = new JLabel(new ImageIcon(getClass().getResource("/res/info.png")));
+                iconLabel = new JLabel(new FlatSVGIcon(getClass().getResource("/res/info.svg")));
                 title = title == null ? INFO_TITLE:title;
                 StyleConstants.setForeground(titleStyle,new Color(0x2A5D8A));
                 break;
