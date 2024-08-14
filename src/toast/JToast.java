@@ -163,7 +163,12 @@ public class JToast extends JWindow implements Runnable, ActionListener , MouseL
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-
+            if(!GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().isWindowTranslucencySupported(GraphicsDevice.WindowTranslucency.TRANSLUCENT)){
+                if(!finished) dispose();
+                finished=true;
+                notification=null;
+                return;
+            }
             //loop
             while (transparency <= 1.0f && !finished) {
                 setOpacity(1.0f - transparency);
